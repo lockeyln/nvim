@@ -3,6 +3,7 @@
 ![](https://img.shields.io/badge/neovim-0.8-green?style=plastic&logo=Neovim) ![](https://img.shields.io/badge/Lua-Jit-green?style=plastic&logo=Lua)
 
 ## Introduction
+source:https://github.com/askfiy/nvim
 
 Based on the configuration of the `Nvim development prerelease` version, it aims to make an out-of-the-box and full-featured code editor.
 
