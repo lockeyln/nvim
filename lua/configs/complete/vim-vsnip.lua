@@ -12,7 +12,7 @@ function M.before()
 end
 
 function M.load()
-    vim.g.vsnip_snippet_dir = options.snippets_dir
+    vim.g.vsnip_snippet_dir = options.snippets_directory
     vim.g.vsnip_filetypes = {
         javascript = { "typescript" },
         typescript = { "javascript" },
@@ -27,16 +27,17 @@ function M.register_key()
         {
             mode = { "i", "s" },
             lhs = "<tab>",
-            rhs = "vsnip#jumpable(1)? '<Plug>(vsnip-jump-next)':'<tab>'",
+            rhs = function()
+                return vim.api.nvim_eval("vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<tab>'")
+            end,
             options = { silent = true, expr = true },
             description = "Jump to the next fragment placeholder",
         },
         {
             mode = { "i", "s" },
             lhs = "<s-tab>",
-            -- TODO: Mapping modification
             rhs = function()
-                return vim.fn["vsnip#jumpable"](-1) and "<Plug>(vsnip-jump-prev)" or "<s-tab>"
+                return vim.api.nvim_eval("vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<s-tab>'")
             end,
             options = { silent = true, expr = true },
             description = "Jump to the prev fragment placeholder",
