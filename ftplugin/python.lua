@@ -13,10 +13,10 @@ func! RunPython()
 	exec "w"
 	if &filetype=='python'
 	    set splitbelow
-	    :sp
-	    :term python3 %
+	    " :sp
+	    " :term python3 %
 	    " :sp term://python %
-		" exec "!time python3.9 %"
+		exec "!time python3 %"
 	endif
 endfunc
 ]]
