@@ -16,7 +16,7 @@ plugins.basic = {
 plugins.theme = {
     { "askfiy/catppuccin" },
     { "ajmwagar/vim-deus" },
-    { "EdenEast/nightfox.nvim", run = ":NightfoxCompile" }
+    { "EdenEast/nightfox.nvim", run = ":NightfoxCompile" },
 }
 
 plugins.lsp = {
@@ -110,7 +110,6 @@ plugins.views = {
     { "kristijanhusak/vim-dadbod-ui", cmd = { "DBUIToggle" } },
     { "dstein64/nvim-scrollview", event = { "BufRead", "BufNewFile" } },
     { "akinsho/toggleterm.nvim", module = "toggleterm" },
-
 }
 
 aux_packer.entry(plugins)
