@@ -14,7 +14,8 @@ plugins.basic = {
 }
 
 plugins.theme = {
-    { "askfiy/catppuccin" },
+    { "askfiy/starlight" },
+    { "catppuccin/nvim", as = "catppuccin" },
     { "ajmwagar/vim-deus" },
     { "EdenEast/nightfox.nvim", run = ":NightfoxCompile" },
 }

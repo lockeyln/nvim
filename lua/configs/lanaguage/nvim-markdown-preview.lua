@@ -12,4 +12,4 @@ end
 
 function M.after() end
 
-return M 
+return M

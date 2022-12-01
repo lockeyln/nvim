@@ -6,13 +6,25 @@ local M = {
     },
 }
 
+local function diff_source()
+    ---@diagnostic disable-next-line: undefined-field
+    local gitsigns = vim.b.gitsigns_status_dict
+    if gitsigns then
+        return {
+            added = gitsigns.added,
+            modified = gitsigns.changed,
+            removed = gitsigns.removed,
+        }
+    end
+end
+
 function M.before() end
 
 function M.load()
     M.lualine.setup({
         options = {
+            theme = "starlight",
             icons_enabled = true,
-            theme = "auto",
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
             disabled_filetypes = {},
@@ -22,6 +34,28 @@ function M.load()
                 tabline = 100,
                 winbar = 100,
             },
+        },
+        sections = {
+            lualine_a = {
+                { "mode" },
+            },
+            lualine_b = {
+                "branch",
+                { "diff", source = diff_source },
+                "diagnostics",
+            },
+            lualine_c = {
+                "filename",
+            },
+            lualine_x = {
+                "encoding",
+                "fileformat",
+                "filetype",
+            },
+            lualine_y = {
+                "progress",
+            },
+            lualine_z = { "location" },
         },
     })
 end
