@@ -5,8 +5,6 @@ M.g = {
 }
 
 M.opt = {
-    tabstop=4,
-    shiftwidth=4,
     ruler = false,
     syntax = "enable",
     showmode = false,
