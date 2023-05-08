@@ -6,7 +6,6 @@ M.g = {
 
 M.opt = {
     ruler = false,
-    syntax = "enable",
     showmode = false,
     swapfile = false,
     cmdheight = 0,
@@ -50,7 +49,6 @@ M.opt = {
 vim.opt.diffopt:append("vertical")
 vim.opt.shortmess:append("sI")
 -- vim.opt.whichwrap:append("<>[]hl")
-
 
 for prefix, tbl in pairs(M) do
     for key, value in pairs(tbl) do
