@@ -1,8 +1,8 @@
 -- https://github.com/SmiteshP/nvim-navic
 
 local options = require("core.options")
-local common = require("utils.common")
-local icons = common.get_icons_group("lsp_kind", true)
+local public = require("utils.public")
+local icons = public.get_icons_group("lsp_kind", true)
 
 local M = {
     requires = {

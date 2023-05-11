@@ -1,7 +1,7 @@
 local M = {}
 
 function M.get_icons_group(icon_group_name, has_suffix_space)
-    local icons = vim.deepcopy(require("utils.common.icons")[icon_group_name])
+    local icons = vim.deepcopy(require("utils.public.icons")[icon_group_name])
 
     if has_suffix_space then
         for icon_tag, icon_code in pairs(icons) do
@@ -51,7 +51,9 @@ function M.terminal_offset_run_command(command)
         NvimTree = function(window_id)
             vim.cmd("NvimTreeToggle")
             vim.cmd(command)
-            require("nvim-tree").toggle(false, true)
+            require("nvim-tree.api").tree.toggle({
+                focus = false,
+            })
         end,
 
         ---@diagnostic disable-next-line: unused-local

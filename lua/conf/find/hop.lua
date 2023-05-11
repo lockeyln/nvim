@@ -1,7 +1,5 @@
 -- https://github.com/phaazon/hop.nvim
 
--- NOTE: 快速跳转
-
 local api = require("utils.api")
 
 local M = {

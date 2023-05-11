@@ -64,6 +64,10 @@ M.lsp = {
         "kosayoda/nvim-lightbulb",
         event = { "LspAttach" },
     },
+    {
+        "askfiy/lsp_extra_dim",
+        event = { "LspAttach" },
+    },
 }
 
 M.complete = {
@@ -115,7 +119,7 @@ M.editor = {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         dependencies = {
-            { "mrjones2014/nvim-ts-rainbow" },
+            { "HiPhish/nvim-ts-rainbow2" },
             { "windwp/nvim-ts-autotag" },
             { "JoosepAlviste/nvim-ts-context-commentstring" },
             { "nvim-lua/plenary.nvim" },
@@ -129,27 +133,6 @@ M.editor = {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = { "UIEnter" },
-    },
-    {
-        "echasnovski/mini.indentscope",
-        version = false, -- wait till new 0.7.0 release to put it back on semver
-        event = { "BufReadPre", "BufNewFile" },
-        opts = {
-            -- symbol = "▏",
-            symbol = "│",
-            options = { try_as_border = true },
-        },
-        init = function()
-            vim.api.nvim_create_autocmd({"FileType"}, {
-                pattern = { "help", "alpha", "dashboard", "Trouble", "lazy", "mason" },
-                callback = function()
-                    vim.b.miniindentscope_disable = true
-                end,
-            })
-        end,
-        config = function(_, opts)
-            require("mini.indentscope").setup(opts)
-        end,
     },
     {
         "numToStr/Comment.nvim",
@@ -243,7 +226,6 @@ M.language = {
 M.tools = {
     {
         "NvChad/nvim-colorizer.lua",
-        event = { "UIEnter" },
     },
     {
         "lewis6991/gitsigns.nvim",

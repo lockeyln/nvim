@@ -1,5 +1,4 @@
 -- https://github.com/kristijanhusak/vim-carbon-now-sh
--- NOTE:代码截图
 
 local api = require("utils.api")
 

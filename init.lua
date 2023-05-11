@@ -1,6 +1,6 @@
-require("core.settings")
+require("core.setting")
 require("core.options")
-require("core.keybinds")
+require("core.mapping")
 require("core.plugins")
 require("core.after")
 

@@ -12,7 +12,7 @@ function M.before() end
 function M.load()
     M.nvim_treesitter_install.prefer_git = true
     M.nvim_treesitter_configs.setup({
-        ensure_installed = { "vim","lua","python" },
+        ensure_installed = { "c","vim","lua","python" },
         ignore_install = {
             "c_sharp",
             "haskell",
@@ -22,7 +22,7 @@ function M.load()
             "ruby",
             "tsx",
             "tlaplus",
-            "qmldir"
+            "qmldir",
         },
         highlight = {
             enable = true,
@@ -45,9 +45,7 @@ function M.load()
         -- nvim-ts-rainbow
         rainbow = {
             enable = true,
-            extended_mode = true,
-            -- Do not enable for files with more than 1000 lines, int
-            max_file_lines = 1000,
+            disable = { "jsx", "html" },
         },
         -- nvim-ts-autotag
         autotag = {

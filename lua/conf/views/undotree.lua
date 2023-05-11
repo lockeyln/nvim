@@ -1,7 +1,7 @@
---- https://github.com/mbbill/undotree
+-- https://github.com/mbbill/undotree
 
 local api = require("utils.api")
-local common = require("utils.common")
+local public = require("utils.public")
 
 local M = {}
 
@@ -40,7 +40,7 @@ function M.register_key()
             mode = { "n" },
             lhs = "<leader>3",
             rhs = function()
-                common.toggle_sidebar("undotree")
+                public.toggle_sidebar("undotree")
                 local ok, _ = pcall(vim.cmd, "UndotreeToggle")
                 if not ok then
                     vim.api.nvim_echo({ { "Can't open undotree", "ErrorMsg" } }, false, {})

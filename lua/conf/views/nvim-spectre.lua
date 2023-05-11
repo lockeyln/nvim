@@ -1,7 +1,7 @@
 -- https://github.com/nvim-pack/nvim-spectre
 
 local api = require("utils.api")
-local common = require("utils.common")
+local public = require("utils.public")
 
 local M = {
     requires = {
@@ -31,7 +31,7 @@ function M.register_key()
             mode = { "n" },
             lhs = "<leader>rp",
             rhs = function()
-                common.toggle_sidebar("spectre_panel")
+                public.toggle_sidebar("spectre_panel")
                 require("spectre").open()
             end,
             options = { silent = true },
@@ -41,7 +41,7 @@ function M.register_key()
             mode = { "n" },
             lhs = "<leader>rf",
             rhs = function()
-                common.toggle_sidebar("spectre_panel")
+                public.toggle_sidebar("spectre_panel")
                 require("spectre").open_file_search()
             end,
             options = { silent = true },
@@ -51,7 +51,7 @@ function M.register_key()
             mode = { "n" },
             lhs = "<leader>rwf",
             rhs = function()
-                common.toggle_sidebar("spectre_panel")
+                public.toggle_sidebar("spectre_panel")
                 require("spectre").open_visual({
                     select_word = true,
                     path = vim.fn.fnameescape(vim.fn.expand("%:p:.")),
@@ -64,7 +64,7 @@ function M.register_key()
             mode = { "n" },
             lhs = "<leader>rwp",
             rhs = function()
-                common.toggle_sidebar("spectre_panel")
+                public.toggle_sidebar("spectre_panel")
                 require("spectre").open_visual({ select_word = true })
             end,
             options = { silent = true },

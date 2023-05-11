@@ -1,8 +1,8 @@
 local api = require("utils.api")
-local common = require("utils.common")
+local public = require("utils.public")
 local options = require("core.options")
-local setting = require("core.settings")
-local icons = common.get_icons_group("diagnostic", true)
+local setting = require("core.setting")
+local icons = public.get_icons_group("diagnostic", true)
 
 local M = {
     filetype = {
@@ -23,8 +23,11 @@ local M = {
     },
 }
 
-function M.lsp_message_filter(contents)
+function M.lsp_message_filter(config)
     local cts = ""
+
+    local contents = config.contents
+    local extra_line = config.extra_line
 
     -- signatures
     if type(contents) == "string" then
@@ -39,11 +42,20 @@ function M.lsp_message_filter(contents)
         cts = cts:gsub(before_char, after_char)
     end
 
+    if not extra_line then
+        return cts
+    end
+
     return ("---\n%s\n---"):format(cts)
 end
 
 function M.lsp_hover(_, result, ctx, config)
-    result.contents = M.lsp_message_filter(result.contents)
+    if result then
+        result.contents = M.lsp_message_filter({
+            contents = result.contents,
+            extra_line = true,
+        })
+    end
 
     local bufnr, winner = vim.lsp.handlers.hover(_, result, ctx, config)
 
@@ -54,10 +66,19 @@ function M.lsp_hover(_, result, ctx, config)
 end
 
 function M.lsp_signature_help(_, result, ctx, config)
-    if result.signatures[1].documentation.value then
-        result.signatures[1].documentation.value = M.lsp_message_filter(result.signatures[1].documentation.value)
-    else
-        result.signatures[1].documentation = M.lsp_message_filter(result.signatures[1].documentation)
+    if result then
+        local documentation = result.signatures[1].documentation
+        local signatures_label = result.signatures[1].label
+
+        if documentation then
+            if documentation.value then
+                documentation.value = M.lsp_message_filter({ contents = documentation.value, extra_line = true })
+            else
+                documentation = M.lsp_message_filter({ contents = documentation, extra_line = true })
+            end
+        else
+            signatures_label = M.lsp_message_filter({ contents = signatures_label, extra_line = false })
+        end
     end
 
     -- vim.pretty_print(result.signatures.documentation.value)
@@ -174,7 +195,7 @@ function M.goto_prev_diagnostic()
 end
 
 function M.toggle_sigature_help()
-    for _, opts in ipairs(common.get_all_window_buffer_filetype()) do
+    for _, opts in ipairs(public.get_all_window_buffer_filetype()) do
         if opts.buffer_filetype == M.filetype.signatureHelp then
             vim.api.nvim_win_close(opts.window_id, false)
             return
@@ -185,7 +206,7 @@ end
 
 function M.scroll_docs_to_up(map)
     return function()
-        for _, opts in ipairs(common.get_all_window_buffer_filetype()) do
+        for _, opts in ipairs(public.get_all_window_buffer_filetype()) do
             if vim.tbl_contains(vim.tbl_values(M.filetype), opts.buffer_filetype) then
                 local window_height = vim.api.nvim_win_get_height(opts.window_id)
                 local cursor_line = vim.api.nvim_win_get_cursor(opts.window_id)[1]
@@ -226,7 +247,7 @@ end
 
 function M.scroll_docs_to_down(map)
     return function()
-        for _, opts in ipairs(common.get_all_window_buffer_filetype()) do
+        for _, opts in ipairs(public.get_all_window_buffer_filetype()) do
             if vim.tbl_contains(vim.tbl_values(M.filetype), opts.buffer_filetype) then
                 local window_height = vim.api.nvim_win_get_height(opts.window_id)
                 local cursor_line = vim.api.nvim_win_get_cursor(opts.window_id)[1]

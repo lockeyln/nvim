@@ -1,5 +1,4 @@
 -- https://github.com/j-hui/fidget.nvim
--- 查看 LSP 加载工作区的进度
 
 local M = {
     requires = {

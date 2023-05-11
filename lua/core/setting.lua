@@ -48,7 +48,7 @@ M.opt = {
 
 vim.opt.diffopt:append("vertical")
 vim.opt.shortmess:append("sI")
--- vim.opt.whichwrap:append("<>[]hl")
+vim.opt.whichwrap:append("<>[]hl")
 
 for prefix, tbl in pairs(M) do
     for key, value in pairs(tbl) do

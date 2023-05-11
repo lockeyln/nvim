@@ -1,7 +1,7 @@
 -- https://github.com/rcarriga/nvim-dap-ui
 
 local api = require("utils.api")
-local common = require("utils.common")
+local public = require("utils.public")
 
 local M = {
     requires = {
@@ -76,7 +76,7 @@ function M.register_key()
             mode = { "n" },
             lhs = "<leader>de",
             rhs = function()
-                for _, opts in ipairs(common.get_all_win_buf_ft()) do
+                for _, opts in ipairs(public.get_all_win_buf_ft()) do
                     if opts.buf_ft == "dapui_hover" then
                         ---@diagnostic disable-next-line: missing-parameter
                         require("dapui").eval()

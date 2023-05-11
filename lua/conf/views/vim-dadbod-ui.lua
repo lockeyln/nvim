@@ -2,7 +2,7 @@
 -- https://github.com/tpope/vim-dadbod
 
 local api = require("utils.api")
-local common = require("utils.common")
+local public = require("utils.public")
 local options = require("core.options")
 
 local M = {}
@@ -25,10 +25,10 @@ function M.register_key()
             mode = { "n" },
             lhs = "<leader>4",
             rhs = function()
-                local aerial_info = common.get_aerial_info()
-                common.toggle_sidebar("dbui")
+                local aerial_info = public.get_aerial_info()
+                public.toggle_sidebar("dbui")
                 vim.cmd("DBUIToggle")
-                common.reset_aerial_width(aerial_info)
+                public.reset_aerial_width(aerial_info)
             end,
             options = { silent = true },
             description = "Open Database Explorer",

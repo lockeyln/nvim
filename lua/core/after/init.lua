@@ -1,6 +1,6 @@
 local M = {}
 
-require("core.after.autocmd")
 require("core.after.usercmd")
+require("core.after.autocmd")
 
 return M

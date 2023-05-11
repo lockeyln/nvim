@@ -1,8 +1,8 @@
 -- https://github.com/akinsho/bufferline.nvim
 
 local api = require("utils.api")
-local common = require("utils.common")
-local icons = common.get_icons_group("diagnostic", true)
+local public = require("utils.public")
+local icons = public.get_icons_group("diagnostic", true)
 
 local M = {
     requires = {

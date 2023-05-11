@@ -1,7 +1,7 @@
 -- https://github.com/akinsho/toggleterm.nvim
 
 local api = require("utils.api")
-local common = require("utils.common")
+local public = require("utils.public")
 local options = require("core.options")
 
 local M = {
@@ -123,11 +123,11 @@ function M.wrapper_command()
     M.toggleterm.term_toggle = function()
         -- FIX: https://github.com/akinsho/toggleterm.nvim/issues/97#issuecomment-1160323635
         local count = vim.api.nvim_eval("v:count1")
-        common.terminal_offset_run_command(("exe %d.'ToggleTerm'"):format(count))
+        public.terminal_offset_run_command(("exe %d.'ToggleTerm'"):format(count))
     end
 
     M.toggleterm.toggle_all_term = function()
-        common.terminal_offset_run_command("ToggleTermToggleAll")
+        public.terminal_offset_run_command("ToggleTermToggleAll")
     end
 end
 

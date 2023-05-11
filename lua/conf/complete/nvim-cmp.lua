@@ -12,10 +12,10 @@
 -- requires curl and unzip
 --    ~/.local/share/nvim/store/cmp-tabnine/install.sh
 
-local common = require("utils.common")
+local public = require("utils.public")
 local options = require("core.options")
 local aid_nvim_cmp = require("utils.aid.nvim-cmp")
-local icons = common.get_icons_group("lsp_kind", false)
+local icons = public.get_icons_group("lsp_kind", false)
 
 local M = {
     requires = {

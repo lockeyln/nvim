@@ -1,12 +1,5 @@
 local M = {}
 
-M.platform = {
-    unix = "",
-    -- unix = " ",
-    dos = "",
-    mac = "",
-}
-
 M.diagnostic = {
     Error = "",
     Warn = "",

@@ -1,9 +1,9 @@
 -- https://github.com/rcarriga/nvim-notify
 
 local api = require("utils.api")
-local common = require("utils.common")
+local public = require("utils.public")
 local options = require("core.options")
-local icons = common.get_icons_group("diagnostic", true)
+local icons = public.get_icons_group("diagnostic", true)
 
 local M = {
     requires = {

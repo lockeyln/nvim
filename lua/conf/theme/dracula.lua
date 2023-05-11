@@ -1,7 +1,5 @@
 -- https://github.com/Mofiqul/dracula.nvim
 
-local options = require("core.options")
-
 local M = {
     requires = {
         "dracula",
