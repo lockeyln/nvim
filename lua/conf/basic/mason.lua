@@ -15,7 +15,7 @@ local M = {
 function M.before()
     M.installer_tools = {
         lsp = {
-            "gopls",
+            -- "gopls",
             "clangd",
             "pyright",
             "css-lsp",
@@ -30,9 +30,9 @@ function M.before()
             "tailwindcss-language-server",
         },
         dap = {
-            "delve",
+            -- "delve",
             "debugpy",
-            "js-debug-adapter@v1.74.1",
+            -- "js-debug-adapter@v1.74.1",
             "cpptools",
         },
         linter = {
