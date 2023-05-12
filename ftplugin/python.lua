@@ -3,28 +3,22 @@ vim.opt_local.shiftwidth = 4
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
 
--- 一键运行python
--- vim.cmd(
--- [[
--- map <F4> :call RunPython()<CR>
--- func! RunPython()
--- 	exec "w"
--- 	if &filetype=='python'
--- 	    set splitbelow
--- 	    " :sp
--- 	    " :term python3 %
--- 	    " :sp term://python %
--- 		exec "!time python3 %"
--- 	endif
--- endfunc
--- ]]
--- )
-
-vim.api.nvim_set_keymap("n", "<F4>", "<cmd>!python3 %<CR>", {silent = true, noremap = true})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        vim.api.nvim_buf_set_keymap(
+            0,
+            "n",
+            "<F4>",
+            -- "<cmd>!python %<CR>",
+            ":w<CR>:split<CR>:te time /usr/bin/python3 %<CR>i",
+            { silent = true, noremap = true }
+        )
+    end,
+})
 
 -- 自动创建python头部信息
-vim.cmd(
-[[
+vim.cmd([[
 autocmd BufNewFile *.py,*.tex exec ":call SetTitle()"
 map <F1> :call SetTitle()<CR>
 func! SetTitle()
@@ -37,5 +31,4 @@ func! SetTitle()
     endif
     normal Go
 endfunc
-]]
-)
+]])
