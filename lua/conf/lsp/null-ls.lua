@@ -30,7 +30,9 @@ function M.load()
             M.null_ls.builtins.formatting.gofmt,
             M.null_ls.builtins.formatting.shfmt,
             M.null_ls.builtins.formatting.prettier,
-            M.null_ls.builtins.formatting.autopep8,
+            M.null_ls.builtins.formatting.autopep8.with({
+                extra_args = { "--aggressive" },
+            }),
             M.null_ls.builtins.formatting.fixjson,
             M.null_ls.builtins.formatting.clang_format.with({
                 extra_args = { "--style", "{IndentWidth: 4}" },

@@ -4,7 +4,17 @@ local options = require("core.options")
 if options.auto_save then
     vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
         pattern = { "*" },
-        command = "silent! wall",
+        callback = function()
+            local disable_file_types = {
+                "toggleterm",
+                "translate",
+            }
+            local directory = vim.fn.fnamemodify(vim.fn.expand("%"), ":p:h")
+            if vim.fn.isdirectory(directory) == 0 and not vim.tbl_contains(disable_file_types, vim.bo.filetype) then
+                vim.fn.mkdir(directory, "p")
+            end
+            vim.cmd("silent! wall")
+        end,
         nested = true,
     })
 end
