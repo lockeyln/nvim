@@ -192,6 +192,11 @@ M.editor = {
         "jbyuki/venn.nvim",
         lazy = true,
     },
+    {
+        'abecodes/tabout.nvim',
+        wants = {'nvim-treesitter'}, -- or require if not used so far
+        after = {'nvim-cmp'}, -- if a completion plugin is using tabs load it before
+    },
 }
 
 M.find = {
