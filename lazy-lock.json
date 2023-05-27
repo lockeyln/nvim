@@ -50,6 +50,7 @@
   "persisted.nvim": { "branch": "main", "commit": "304a3c55514df408781c965d2b5aae21c34857fb" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
   "promise-async": { "branch": "main", "commit": "e94f35161b8c5d4a4ca3b6ff93dd073eb9214c0e" },
+  "sniprun": { "branch": "master", "commit": "83791b87a8ede5275a2c060605bf1fec782205cc" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
   "surround.nvim": { "branch": "master", "commit": "36c253d6470910692491b13382f54c9bab2811e1" },
   "switch.vim": { "branch": "main", "commit": "a3fd7bf4d61fdbe00356a646744b2fe6f97524b6" },

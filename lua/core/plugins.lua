@@ -144,7 +144,7 @@ M.editor = {
             options = { try_as_border = true },
         },
         init = function()
-            vim.api.nvim_create_autocmd({"FileType"}, {
+            vim.api.nvim_create_autocmd({ "FileType" }, {
                 pattern = { "help", "alpha", "dashboard", "Trouble", "lazy", "mason" },
                 callback = function()
                     vim.b.miniindentscope_disable = true
@@ -193,9 +193,14 @@ M.editor = {
         lazy = true,
     },
     {
-        'abecodes/tabout.nvim',
-        wants = {'nvim-treesitter'}, -- or require if not used so far
-        after = {'nvim-cmp'}, -- if a completion plugin is using tabs load it before
+        "abecodes/tabout.nvim",
+        wants = { "nvim-treesitter" }, -- or require if not used so far
+        after = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
+    },
+    {
+        "michaelb/sniprun",
+        event = "VimEnter",
+        build = "bash ./install.sh",
     },
 }
 
