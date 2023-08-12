@@ -17,7 +17,7 @@ local M = {
     -- formatter
     sql_langkind = "postgresql",
      -- lsp
-    inlay_hint = false
+    -- inlay_hint = false
 }
 
 return M

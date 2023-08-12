@@ -56,3 +56,4 @@ if options.auto_remove_new_lines_comment then
         end,
     })
 end
+
